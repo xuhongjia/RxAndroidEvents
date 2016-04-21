@@ -1,4 +1,4 @@
-package com.wangjie.rxandroideventssample.ui.main.adapter;
+package com.wangjie.rxandroideventssample.ui.adpater;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.View;

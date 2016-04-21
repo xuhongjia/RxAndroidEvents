@@ -1,4 +1,4 @@
-package com.wangjie.rxandroideventssample.ui.main;
+package com.wangjie.rxandroideventssample.ui.activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ import com.wangjie.rxandroideventssample.events.DeleteFeedsEvent;
 import com.wangjie.rxandroideventssample.events.FeedItemClickEvent;
 import com.wangjie.rxandroideventssample.provider.model.Feed;
 import com.wangjie.rxandroideventssample.rxbus.RxBus;
-import com.wangjie.rxandroideventssample.ui.main.adapter.TabAdapter;
+import com.wangjie.rxandroideventssample.ui.adpater.TabAdapter;
 import com.wangjie.rxandroideventssample.ui.tab.TabContainer;
 import com.wangjie.rxandroideventssample.ui.tab.chat.TabChatContainer;
 import com.wangjie.rxandroideventssample.ui.tab.feed.TabFeedContainer;

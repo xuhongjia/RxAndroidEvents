@@ -21,7 +21,7 @@ import com.wangjie.rxandroideventssample.events.DeleteFeedsEvent;
 import com.wangjie.rxandroideventssample.events.FeedItemClickEvent;
 import com.wangjie.rxandroideventssample.provider.model.Feed;
 import com.wangjie.rxandroideventssample.rxbus.RxBus;
-import com.wangjie.rxandroideventssample.ui.main.adapter.FeedAdapter;
+import com.wangjie.rxandroideventssample.ui.adpater.FeedAdapter;
 import com.wangjie.rxandroideventssample.ui.tab.TabContainer;
 
 import java.util.List;
@@ -82,6 +82,7 @@ public class TabFeedContainer extends TabContainer implements TabFeedViewer, Fee
     @Override
     public void onLoadReeds(List<Feed> feedList) {
         if (!ABTextUtil.isEmpty(feedList)) {
+            //始终显示第一项
             int firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
             int insertPos = firstVisibleItemPosition < 0 ? 0 : firstVisibleItemPosition + 1;
             adapter.getList().addAll(insertPos, feedList);

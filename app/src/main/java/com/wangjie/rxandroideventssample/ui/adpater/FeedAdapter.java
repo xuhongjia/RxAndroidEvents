@@ -1,4 +1,4 @@
-package com.wangjie.rxandroideventssample.ui.main.adapter;
+package com.wangjie.rxandroideventssample.ui.adpater;
 
 import android.content.Context;
 import android.view.View;
