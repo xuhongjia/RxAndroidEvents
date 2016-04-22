@@ -39,6 +39,7 @@ public class ResponseEntity {
     private Integer notify;
     private Integer index_notify;
     private Integer order_notyfy;
+    private String url;
     public void fromJson(JSONObject jsonObject)
     {
         this.error = jsonObject.optInt("error");
@@ -109,5 +110,13 @@ public class ResponseEntity {
 
     public void setOrder_notyfy(Integer order_notyfy) {
         this.order_notyfy = order_notyfy;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

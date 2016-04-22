@@ -13,12 +13,16 @@ import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 import com.wangjie.androidbucket.mvp.ABActivityViewer;
 import com.wangjie.androidbucket.mvp.ABBasePresenter;
 import com.wangjie.androidinject.annotation.core.base.AnnotationManager;
 import com.wangjie.androidinject.annotation.present.AIPresent;
 import com.wangjie.androidinject.annotation.present.common.CallbackSample;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
+import com.wangjie.rxandroideventssample.global.GsonManager;
+import com.wangjie.rxandroideventssample.provider.model.ResponseEntity;
 import com.wangjie.rxandroideventssample.rxbus.RxBusAnnotationManager;
 import com.wangjie.rxandroideventssample.rxbus.RxBusSample;
 
@@ -30,10 +34,10 @@ import java.lang.reflect.Method;
  * Email: tiantian.china.2@gmail.com
  * Date: 6/10/15.
  */
-public class TabContainer extends FrameLayout implements AIPresent, CallbackSample, ABActivityViewer, RxBusSample {
+public class TabContainer extends FrameLayout implements AIPresent, CallbackSample, ABActivityViewer {
     private static final String TAG = TabContainer.class.getSimpleName();
     private RxBusAnnotationManager rxBusAnnotationManager;
-
+    protected Gson gson = GsonManager.getInstance().getGson();
     private ABBasePresenter presenter;
 
     public TabContainer(Context context) {
@@ -65,7 +69,7 @@ public class TabContainer extends FrameLayout implements AIPresent, CallbackSamp
     private View rootView;
 
     @Override
-    protected void onAttachedToWindow() {
+    public void onAttachedToWindow() {
         super.onAttachedToWindow();
         Log.d(TAG, "[" + this.getClass().getSimpleName() + "]onAttachedToWindow");
         long start = System.currentTimeMillis();
@@ -74,7 +78,7 @@ public class TabContainer extends FrameLayout implements AIPresent, CallbackSamp
     }
 
     @Override
-    protected void onDetachedFromWindow() {
+    public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         Log.d(TAG, "[" + this.getClass().getSimpleName() + "]onDetachedFromWindow");
         closeAllTask();
@@ -209,9 +213,15 @@ public class TabContainer extends FrameLayout implements AIPresent, CallbackSamp
                 .show();
     }
 
-
-    @Override
-    public void onPostAccept(Object tag, Object event) {
-
+    public void onPostAccept(ResponseEntity responseEntity) {
+        ResponseEntity.ERROR code = ResponseEntity.ERROR.integerToEnum(responseEntity.getError());
+        switch (code){
+            case FAILED:
+                showToastMessage(responseEntity.getMsg().toString());
+                break;
+            case NOT_LOGIN:
+                showToastMessage("没有登录");
+                break;
+        }
     }
 }

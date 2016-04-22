@@ -12,4 +12,8 @@ public class ActionEvent {
     public static final String EDIT = "EDIT";
     public static final String ERROR = "ERROR";
     public static final String NO_LOGIN = "NO-LOGIN";
+
+
+    //网络请求返回
+    public static final String RESPONSE = "response";
 }

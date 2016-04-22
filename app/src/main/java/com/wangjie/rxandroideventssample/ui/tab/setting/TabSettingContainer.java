@@ -17,7 +17,7 @@ public class TabSettingContainer extends TabContainer {
     }
 
     @Override
-    protected void onAttachedToWindow() {
+    public void onAttachedToWindow() {
         super.onAttachedToWindow();
     }
 }

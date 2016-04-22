@@ -157,7 +157,15 @@ public class RxBusAnnotationManager {
             for (ObservableWrapper observableWrapper : registeredObservable) {
                 RxBus.get().unregister(observableWrapper.getTag(), observableWrapper.getObservable());
             }
+            registeredObservable.clear();
         }
     }
 
+    public void stopClear(){
+        if (!ABTextUtil.isEmpty(registeredObservable)) {
+            for (ObservableWrapper observableWrapper : registeredObservable) {
+                RxBus.get().unregister(observableWrapper.getTag(), observableWrapper.getObservable());
+            }
+        }
+    }
 }

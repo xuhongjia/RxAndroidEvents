@@ -1,10 +1,17 @@
 package com.wangjie.rxandroideventssample.base;
 
+import android.nfc.Tag;
+import android.os.Bundle;
+import android.os.PersistableBundle;
+
 import com.wangjie.androidinject.annotation.present.AIAppCompatActivity;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
 import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
 import com.wangjie.rxandroideventssample.events.ActionEvent;
+import com.wangjie.rxandroideventssample.global.APIInterface;
 import com.wangjie.rxandroideventssample.global.AppManager;
+import com.wangjie.rxandroideventssample.provider.model.ResponseEntity;
+import com.wangjie.rxandroideventssample.rxbus.RxBus;
 import com.wangjie.rxandroideventssample.rxbus.RxBusAnnotationManager;
 import com.wangjie.rxandroideventssample.rxbus.RxBusSample;
 
@@ -16,8 +23,10 @@ import java.lang.reflect.Method;
  * Date: 6/10/15.
  */
 public class BaseActivity extends AIAppCompatActivity implements RxBusSample{
-    public static final String TAG = BaseActivity.class.getSimpleName();
     private RxBusAnnotationManager rxBusAnnotationManager;
+    private static final String TAG = BaseActivity.class.getSimpleName();
+
+    protected boolean isStop = false;
     @Override
     public void parserMethodAnnotations(Method method) throws Exception {
         if (method.isAnnotationPresent(Accept.class)) {
@@ -28,6 +37,18 @@ public class BaseActivity extends AIAppCompatActivity implements RxBusSample{
         }
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (null != rxBusAnnotationManager) {
+            rxBusAnnotationManager.stopClear();
+        }
+    }
 
     @Override
     protected void onDestroy() {
@@ -38,13 +59,19 @@ public class BaseActivity extends AIAppCompatActivity implements RxBusSample{
     }
 
     @Override
-    @Accept(
-            {
-                    @AcceptType(tag = ActionEvent.NO_LOGIN, clazz = String.class),
-                    @AcceptType(tag = ActionEvent.ERROR, clazz = String.class)
-            }
-    )
     public void onPostAccept(Object tag, Object event) {
         //可能会被调用多次
+    }
+
+    public void Response(ResponseEntity responseEntity){
+        ResponseEntity.ERROR code = ResponseEntity.ERROR.integerToEnum(responseEntity.getError());
+        switch (code){
+            case FAILED:
+                showToastMessage(responseEntity.getMsg().toString());
+                break;
+            case NOT_LOGIN:
+                showToastMessage("没有登录");
+                break;
+        }
     }
 }

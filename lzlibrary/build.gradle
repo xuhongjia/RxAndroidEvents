@@ -1,0 +1,52 @@
+apply plugin: 'com.android.library'
+android {
+    compileSdkVersion 23
+    buildToolsVersion '23.0.2'
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 14
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dexOptions {
+        incremental true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    useLibrary 'org.apache.http.legacy'
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
+    compile files('libs/zxing.jar')
+//    compile 'com.jakewharton:butterknife:6.1.0'
+    compile 'com.google.code.gson:gson:2.5'
+    compile 'info.hoang8f:fbutton:1.0.5'
+    compile 'com.zhy:okhttputils:2.0.2'
+    compile 'com.wang.avi:library:1.0.1'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.5.0'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile files('libs/android-async-http-1.4.9.jar')
+    compile files('libs/commons-codec-1.6.jar')
+    compile files('libs/httpclient-4.3.6.jar')
+    compile files('libs/jackson-all-1.9.0.jar')
+    compile files('libs/easemobchat_2.2.0.jar')
+    compile files('libs/alipaysdk.jar')
+}

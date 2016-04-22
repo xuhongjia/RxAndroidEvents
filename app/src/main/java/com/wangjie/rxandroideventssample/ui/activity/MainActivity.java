@@ -1,6 +1,7 @@
 package com.wangjie.rxandroideventssample.ui.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -12,12 +13,15 @@ import com.wangjie.androidinject.annotation.annotations.base.AILayout;
 import com.wangjie.androidinject.annotation.annotations.base.AIView;
 import com.wangjie.rxandroideventssample.R;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
+import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
 import com.wangjie.rxandroideventssample.base.BaseActivity;
 import com.wangjie.rxandroideventssample.events.ActionEvent;
 import com.wangjie.rxandroideventssample.events.AddFeedsEvent;
 import com.wangjie.rxandroideventssample.events.DeleteFeedsEvent;
 import com.wangjie.rxandroideventssample.events.FeedItemClickEvent;
+import com.wangjie.rxandroideventssample.global.APIInterface;
 import com.wangjie.rxandroideventssample.provider.model.Feed;
+import com.wangjie.rxandroideventssample.provider.model.ResponseEntity;
 import com.wangjie.rxandroideventssample.rxbus.RxBus;
 import com.wangjie.rxandroideventssample.ui.adpater.TabAdapter;
 import com.wangjie.rxandroideventssample.ui.tab.TabContainer;
@@ -30,14 +34,14 @@ import java.util.Random;
 
 @AILayout(R.layout.activity_main)
 public class MainActivity extends BaseActivity {
-    private static final String TAG = MainActivity.class.getName();
+    public static final String TAG = MainActivity.class.getName();
     @AIView(R.id.activity_main_tb)
     private Toolbar toolbar;
     @AIView(R.id.activity_main_tl)
     private TabLayout tabLayout;
     @AIView(R.id.activity_main_vp)
     private ViewPager viewPager;
-
+    List<TabContainer> list;
     private TabAdapter tabAdapter;
 
     @Override
@@ -60,7 +64,7 @@ public class MainActivity extends BaseActivity {
         tabLayout.addTab(tabLayout.newTab().setText("chat"));
         tabLayout.addTab(tabLayout.newTab().setText("setting"));
         tabAdapter = new TabAdapter();
-        List<TabContainer> list = tabAdapter.getList();
+        list = tabAdapter.getList();
         Context context = getContext();
         list.add(new TabFeedContainer(context));
         list.add(new TabChatContainer(context));
@@ -141,6 +145,8 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.menu_main_action_event_refresh:
                 RxBus.get().post(ActionEvent.REFRESH, ActionEvent.REFRESH);
+//                Intent intent = new Intent(this,Main2Activity.class);
+//                startActivity(intent);
                 break;
             case R.id.menu_main_action_event_close:
                 RxBus.get().post(ActionEvent.CLOSE, ActionEvent.CLOSE);
@@ -155,6 +161,33 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Accept({
+            @AcceptType(tag =  APIInterface.CHECKED_QRCODE_API ,clazz = Object.class)
+    })
+    public void login(Object tag, Object event){
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(list!=null){
+            for (TabContainer tabContainer : list){
+                tabContainer.onDetachedFromWindow();
+            }
+            isStop=true;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(list!=null&&isStop){
+            for (TabContainer tabContainer : list){
+                tabContainer.onAttachedToWindow();
+            }
+        }
+    }
 
     @Accept
     public void onPostAccept(Object tag, FeedItemClickEvent event) {

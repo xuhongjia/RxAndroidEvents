@@ -15,7 +15,6 @@ public class AppManager {
 
     private List<BaseActivity> mActivityList = new LinkedList<BaseActivity>();
     private static AppManager instance;
-
     private AppManager() {
     }
 

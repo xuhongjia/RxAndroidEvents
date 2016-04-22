@@ -1,0 +1,41 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Black.NoTitleBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="MyDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <declare-styleable name="MyRatingStar">
+        <attr name="rateValue" format="integer" />
+        <attr name="rateIcon" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="LZTextView">
+        <attr name="deleteLine" format="boolean" />
+        <attr name="underLine" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="LZButton">
+        <attr name="lz_radius" format="integer" />
+        <attr name="lz_background" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircleButton">
+        <attr name="cb_color" format="color" />
+        <attr name="cb_pressedRingWidth" format="dimension" />
+    </declare-styleable>
+
+    <style name="AnimationPopup">
+        <item name="android:windowEnterAnimation">@anim/pull_in</item>
+        <item name="android:windowExitAnimation">@anim/pull_out</item>
+    </style>
+
+
+
+</resources>

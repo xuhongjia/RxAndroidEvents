@@ -1,11 +1,19 @@
 package com.wangjie.rxandroideventssample.base;
 
+import com.google.gson.Gson;
 import com.wangjie.androidbucket.log.Logger;
 import com.wangjie.androidbucket.mvp.ABActivityViewer;
 import com.wangjie.androidbucket.mvp.ABBasePresenter;
 import com.wangjie.androidbucket.mvp.ABInteractor;
+import com.wangjie.rxandroideventssample.annotation.accept.Accept;
+import com.wangjie.rxandroideventssample.events.ActionEvent;
+import com.wangjie.rxandroideventssample.rxbus.RxBus;
+import com.wangjie.rxandroideventssample.rxbus.RxBusAnnotationManager;
+import com.wangjie.rxandroideventssample.rxbus.RxBusSample;
+
 import rx.Subscription;
 
+import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -15,7 +23,7 @@ import java.util.Set;
  * Email: tiantian.china.2@gmail.com
  * Date: 6/10/15.
  */
-public class BasePresenter<V extends ABActivityViewer, I extends ABInteractor> extends ABBasePresenter<V, I> {
+public class BasePresenter<V extends ABActivityViewer, I extends ABInteractor> extends ABBasePresenter<V, I>  implements RxBusSample{
     private static final String TAG = BasePresenter.class.getSimpleName();
 
     private Set<Subscription> subscriptions = new HashSet<>();
@@ -49,4 +57,14 @@ public class BasePresenter<V extends ABActivityViewer, I extends ABInteractor> e
         }
     }
 
+
+    @Override
+    public void onPostAccept(Object tag, Object event) {
+        if(event.toString().equals(ActionEvent.NO_LOGIN)){
+            RxBus.get().post(ActionEvent.NO_LOGIN,ActionEvent.NO_LOGIN);
+        }
+        else{
+            RxBus.get().post(ActionEvent.ERROR,event.toString());
+        }
+    }
 }

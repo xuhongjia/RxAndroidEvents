@@ -19,6 +19,7 @@ import com.wangjie.rxandroideventssample.events.ActionEvent;
 import com.wangjie.rxandroideventssample.events.AddFeedsEvent;
 import com.wangjie.rxandroideventssample.events.DeleteFeedsEvent;
 import com.wangjie.rxandroideventssample.events.FeedItemClickEvent;
+import com.wangjie.rxandroideventssample.global.AppManager;
 import com.wangjie.rxandroideventssample.provider.model.Feed;
 import com.wangjie.rxandroideventssample.rxbus.RxBus;
 import com.wangjie.rxandroideventssample.ui.adpater.FeedAdapter;
@@ -49,7 +50,7 @@ public class TabFeedContainer extends TabContainer implements TabFeedViewer, Fee
     private TabFeedPresenter presenter;
 
     @Override
-    protected void onAttachedToWindow() {
+    public void onAttachedToWindow() {
         super.onAttachedToWindow();
 
         Context context = getContext();
@@ -107,7 +108,7 @@ public class TabFeedContainer extends TabContainer implements TabFeedViewer, Fee
     }
 
     @Override
-    protected void onDetachedFromWindow() {
+    public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
     }
 
