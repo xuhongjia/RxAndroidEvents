@@ -154,31 +154,31 @@ public class RestApi {
      */
     private void dealNetwork(ResponseEntity responseEntity) {
         responseEntity.setUrl(url);
-        RxBus.get().post(url,responseEntity);
-//        int error = responseEntity.getError();
-//        int messageType = responseEntity.getMsg_type();
-//        if (messageType == -100) {
-//            error = -100;
-//        }
-//        ResponseEntity.ERROR code = ResponseEntity.ERROR.integerToEnum(error);
-//        switch (code) {
-//            case FAILED:
-//                RxBus.get().post(url,responseEntity);
-////                dispatcher.dispatch(BaseActions.ERROR, BaseActions.DATA, responseEntity.getMsg(), BaseActions.ERROR, error);
-//                break;
-//            case SUCCESS:
-//                RxBus.get().post(url,responseEntity);
-////                if (TextUtils.isEmpty(extra))
-////                    dispatcher.dispatch(BaseActions.RESPONSE + url, BaseActions.DATA, responseEntity.getData(), BaseActions.ERROR, error);
-////                else
-////                    dispatcher.dispatch(BaseActions.RESPONSE + url + extra, BaseActions.DATA, responseEntity.getData(),BaseActions.ERROR, error);
-//                break;
-//            case NOT_LOGIN:
-//                RxBus.get().post(url, responseEntity);
-////                YSharePreference.getInstance().setUser(null);
-////                dispatcher.dispatch(BaseActions.NO_LOGIN);
-//                break;
-//        }
+//        RxBus.get().post(url,responseEntity);
+        int error = responseEntity.getError();
+        int messageType = responseEntity.getMsg_type();
+        if (messageType == -100) {
+            error = -100;
+        }
+        ResponseEntity.ERROR code = ResponseEntity.ERROR.integerToEnum(error);
+        switch (code) {
+            case FAILED:
+                RxBus.get().post(ActionEvent.ERROR,responseEntity.getMsg());
+//                dispatcher.dispatch(BaseActions.ERROR, BaseActions.DATA, responseEntity.getMsg(), BaseActions.ERROR, error);
+                break;
+            case SUCCESS:
+                RxBus.get().post(url,responseEntity.getData());
+//                if (TextUtils.isEmpty(extra))
+//                    dispatcher.dispatch(BaseActions.RESPONSE + url, BaseActions.DATA, responseEntity.getData(), BaseActions.ERROR, error);
+//                else
+//                    dispatcher.dispatch(BaseActions.RESPONSE + url + extra, BaseActions.DATA, responseEntity.getData(),BaseActions.ERROR, error);
+                break;
+            case NOT_LOGIN:
+                RxBus.get().post(ActionEvent.NO_LOGIN, responseEntity);
+//                YSharePreference.getInstance().setUser(null);
+//                dispatcher.dispatch(BaseActions.NO_LOGIN);
+                break;
+        }
 
     }
 

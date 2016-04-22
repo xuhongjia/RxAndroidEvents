@@ -21,6 +21,7 @@ import com.wangjie.androidinject.annotation.core.base.AnnotationManager;
 import com.wangjie.androidinject.annotation.present.AIPresent;
 import com.wangjie.androidinject.annotation.present.common.CallbackSample;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
+import com.wangjie.rxandroideventssample.events.ActionEvent;
 import com.wangjie.rxandroideventssample.global.GsonManager;
 import com.wangjie.rxandroideventssample.provider.model.ResponseEntity;
 import com.wangjie.rxandroideventssample.rxbus.RxBusAnnotationManager;
@@ -213,15 +214,14 @@ public class TabContainer extends FrameLayout implements AIPresent, CallbackSamp
                 .show();
     }
 
-    public void onPostAccept(ResponseEntity responseEntity) {
-        ResponseEntity.ERROR code = ResponseEntity.ERROR.integerToEnum(responseEntity.getError());
-        switch (code){
-            case FAILED:
-                showToastMessage(responseEntity.getMsg().toString());
-                break;
-            case NOT_LOGIN:
+    public void onPostAccept(Object tag, Object event) {
+        switch (tag.toString()){
+            case ActionEvent.ERROR:
+                showToastMessage(event.toString());
+                return;
+            case ActionEvent.NO_LOGIN:
                 showToastMessage("没有登录");
-                break;
+                return;
         }
     }
 }

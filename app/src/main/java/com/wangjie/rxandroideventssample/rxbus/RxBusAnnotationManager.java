@@ -135,7 +135,7 @@ public class RxBusAnnotationManager {
                 if (null == handler) {
                     throw new RuntimeException("DefaultAcceptConfiguration applyAcceptHandler() return null, please register OnDefaultAcceptConfiguration in Application");
                 }
-                schedulerObservable = observable.observeOn(AndroidSchedulers.handlerThread(handler));
+                schedulerObservable = observable.observeOn(AndroidSchedulers.mainThread());
                 break;
             default: // MAIN_THREAD default
                 schedulerObservable = observable.observeOn(AndroidSchedulers.mainThread());

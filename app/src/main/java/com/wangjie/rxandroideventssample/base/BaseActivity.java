@@ -60,18 +60,14 @@ public class BaseActivity extends AIAppCompatActivity implements RxBusSample{
 
     @Override
     public void onPostAccept(Object tag, Object event) {
-        //可能会被调用多次
-    }
-
-    public void Response(ResponseEntity responseEntity){
-        ResponseEntity.ERROR code = ResponseEntity.ERROR.integerToEnum(responseEntity.getError());
-        switch (code){
-            case FAILED:
-                showToastMessage(responseEntity.getMsg().toString());
-                break;
-            case NOT_LOGIN:
+        switch (tag.toString()){
+            case ActionEvent.ERROR:
+                showToastMessage(event.toString());
+                return;
+            case ActionEvent.NO_LOGIN:
                 showToastMessage("没有登录");
-                break;
+                return;
         }
     }
+
 }

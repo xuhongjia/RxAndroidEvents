@@ -68,18 +68,13 @@ public class TabChatContainer extends TabContainer implements TabChatViewer{
     }
 
     //网络请求返回的callback
-    @Accept({
-            @AcceptType(tag = APIInterface.SEND_VALIDATE_CODE_API,clazz = ResponseEntity.class)
-    })
+    @Accept
     public void onPostAccept(Object tag , Object event){
-        ResponseEntity responseEntity = (ResponseEntity) event;
-        super.onPostAccept(responseEntity);
-        if(responseEntity.getError()==0){
-            switch (tag.toString()){
-                case APIInterface.SEND_VALIDATE_CODE_API:
-                    validateReturn(gson.fromJson(responseEntity.getData().toString(), PhoneValidate.class));
-                    break;
-            }
+        super.onPostAccept(tag,event);
+        switch (tag.toString()){
+            case APIInterface.SEND_VALIDATE_CODE_API:
+                validateReturn(gson.fromJson(event.toString(), PhoneValidate.class));
+                break;
         }
     }
 }

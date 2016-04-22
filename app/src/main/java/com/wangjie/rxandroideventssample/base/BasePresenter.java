@@ -23,7 +23,7 @@ import java.util.Set;
  * Email: tiantian.china.2@gmail.com
  * Date: 6/10/15.
  */
-public class BasePresenter<V extends ABActivityViewer, I extends ABInteractor> extends ABBasePresenter<V, I>  implements RxBusSample{
+public class BasePresenter<V extends ABActivityViewer, I extends ABInteractor> extends ABBasePresenter<V, I>  {
     private static final String TAG = BasePresenter.class.getSimpleName();
 
     private Set<Subscription> subscriptions = new HashSet<>();
@@ -57,14 +57,4 @@ public class BasePresenter<V extends ABActivityViewer, I extends ABInteractor> e
         }
     }
 
-
-    @Override
-    public void onPostAccept(Object tag, Object event) {
-        if(event.toString().equals(ActionEvent.NO_LOGIN)){
-            RxBus.get().post(ActionEvent.NO_LOGIN,ActionEvent.NO_LOGIN);
-        }
-        else{
-            RxBus.get().post(ActionEvent.ERROR,event.toString());
-        }
-    }
 }
