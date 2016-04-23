@@ -21,21 +21,24 @@ import com.wangjie.androidinject.annotation.core.base.AnnotationManager;
 import com.wangjie.androidinject.annotation.present.AIPresent;
 import com.wangjie.androidinject.annotation.present.common.CallbackSample;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
+import com.wangjie.rxandroideventssample.base.BaseViewer;
 import com.wangjie.rxandroideventssample.events.ActionEvent;
 import com.wangjie.rxandroideventssample.global.GsonManager;
+import com.wangjie.rxandroideventssample.provider.model.Feed;
 import com.wangjie.rxandroideventssample.provider.model.ResponseEntity;
 import com.wangjie.rxandroideventssample.rxbus.RxBusAnnotationManager;
 import com.wangjie.rxandroideventssample.rxbus.RxBusSample;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * Author: wangjie
  * Email: tiantian.china.2@gmail.com
  * Date: 6/10/15.
  */
-public class TabContainer extends FrameLayout implements AIPresent, CallbackSample, ABActivityViewer {
+public class TabContainer extends FrameLayout implements AIPresent, CallbackSample, BaseViewer {
     private static final String TAG = TabContainer.class.getSimpleName();
     private RxBusAnnotationManager rxBusAnnotationManager;
     protected Gson gson = GsonManager.getInstance().getGson();
@@ -223,5 +226,15 @@ public class TabContainer extends FrameLayout implements AIPresent, CallbackSamp
                 showToastMessage("没有登录");
                 return;
         }
+    }
+
+    @Override
+    public void error(String error) {
+
+    }
+
+    @Override
+    public void noLogin() {
+
     }
 }

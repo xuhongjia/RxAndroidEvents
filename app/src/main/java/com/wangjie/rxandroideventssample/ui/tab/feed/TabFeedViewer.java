@@ -1,6 +1,7 @@
 package com.wangjie.rxandroideventssample.ui.tab.feed;
 
 import com.wangjie.androidbucket.mvp.ABActivityViewer;
+import com.wangjie.rxandroideventssample.base.BaseViewer;
 import com.wangjie.rxandroideventssample.provider.model.Feed;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * Email: tiantian.china.2@gmail.com
  * Date: 6/10/15.
  */
-public interface TabFeedViewer extends ABActivityViewer{
+public interface TabFeedViewer extends BaseViewer{
     void loadFeeds(int size);
     void onLoadReeds(List<Feed> feedList);
 

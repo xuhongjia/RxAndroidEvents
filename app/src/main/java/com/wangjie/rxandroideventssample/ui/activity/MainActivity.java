@@ -129,8 +129,8 @@ public class MainActivity extends BaseActivity {
                 AddFeedsEvent addFeedsEvent = new AddFeedsEvent();
                 Feed feed = new Feed();
                 long currMillis = System.currentTimeMillis();
-                feed.setTitle("rxTitle_" + currMillis);
-                feed.setContent("rxContent_" + currMillis);
+                feed.setTitle("rxTitle_2" + currMillis);
+                feed.setContent("rxContent_2" + currMillis);
                 feed.setCreated(System.currentTimeMillis() - (random.nextInt(ONE_HOUR + 10) + ONE_HOUR));
                 addFeedsEvent.getFeeds().add(feed);
 

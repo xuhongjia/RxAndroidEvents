@@ -53,13 +53,13 @@ public class TabChatContainer extends TabContainer implements TabChatViewer{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.getValidate:
-                getValidate(phone.getText().toString().trim());
+                presenter.getValidate(phone.getText().toString().trim());
                 break;
         }
     }
     @Override
     public void getValidate(String phone) {
-        presenter.getValidate(phone);
+//        presenter.getValidate(phone);
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 
+import com.wangjie.androidbucket.mvp.ABActivityViewer;
 import com.wangjie.androidinject.annotation.present.AIAppCompatActivity;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
 import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
@@ -22,7 +23,7 @@ import java.lang.reflect.Method;
  * Email: tiantian.china.2@gmail.com
  * Date: 6/10/15.
  */
-public class BaseActivity extends AIAppCompatActivity implements RxBusSample{
+public class BaseActivity extends AIAppCompatActivity implements RxBusSample,BaseViewer{
     private RxBusAnnotationManager rxBusAnnotationManager;
     private static final String TAG = BaseActivity.class.getSimpleName();
 
@@ -70,4 +71,13 @@ public class BaseActivity extends AIAppCompatActivity implements RxBusSample{
         }
     }
 
+    @Override
+    public void error(String error) {
+
+    }
+
+    @Override
+    public void noLogin() {
+
+    }
 }
