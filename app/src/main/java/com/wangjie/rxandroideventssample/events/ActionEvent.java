@@ -6,12 +6,13 @@ package com.wangjie.rxandroideventssample.events;
  * Date: 6/15/15.
  */
 public class ActionEvent {
+    public static final String NETWORK_ERROR = "NETWORK-ERROR";
     public static final String REFRESH = "REFRESH";
     public static final String BACK = "BACK";
     public static final String CLOSE = "CLOSE";
     public static final String EDIT = "EDIT";
     public static final String ERROR = "ERROR";
-    public static final String NO_LOGIN = "NO-LOGIN";
+    public static final String NO_LOGIN = "NOLOGIN";
 
 
     //网络请求返回

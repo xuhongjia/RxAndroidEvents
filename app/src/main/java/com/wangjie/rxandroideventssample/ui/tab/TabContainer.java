@@ -21,8 +21,10 @@ import com.wangjie.androidinject.annotation.core.base.AnnotationManager;
 import com.wangjie.androidinject.annotation.present.AIPresent;
 import com.wangjie.androidinject.annotation.present.common.CallbackSample;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
+import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
 import com.wangjie.rxandroideventssample.base.BaseViewer;
 import com.wangjie.rxandroideventssample.events.ActionEvent;
+import com.wangjie.rxandroideventssample.events.NetWorkEvent;
 import com.wangjie.rxandroideventssample.global.GsonManager;
 import com.wangjie.rxandroideventssample.provider.model.Feed;
 import com.wangjie.rxandroideventssample.provider.model.ResponseEntity;
@@ -185,7 +187,7 @@ public class TabContainer extends FrameLayout implements AIPresent, CallbackSamp
      */
     @Override
     public void showToastMessage(String s) {
-        Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+        showToastMessage(s);
     }
 
     @Override
@@ -217,24 +219,16 @@ public class TabContainer extends FrameLayout implements AIPresent, CallbackSamp
                 .show();
     }
 
-    public void onPostAccept(Object tag, Object event) {
-        switch (tag.toString()){
-            case ActionEvent.ERROR:
-                showToastMessage(event.toString());
-                return;
-            case ActionEvent.NO_LOGIN:
-                showToastMessage("没有登录");
-                return;
-        }
-    }
 
     @Override
     public void error(String error) {
-
+        showToastMessage(error);
     }
 
     @Override
-    public void noLogin() {
+    public void noLogin(String msg) {
 
     }
+
+
 }

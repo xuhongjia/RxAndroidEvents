@@ -161,13 +161,6 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Accept({
-            @AcceptType(tag =  APIInterface.CHECKED_QRCODE_API ,clazz = Object.class)
-    })
-    public void login(Object tag, Object event){
-
-    }
-
     @Override
     protected void onStop() {
         super.onStop();
@@ -195,4 +188,12 @@ public class MainActivity extends BaseActivity {
         Feed feed = event.getFeed();
         showToastMessage("main_" + feed.getTitle() + "_" + event.getPosition());
     }
+
+    @Accept({
+            @AcceptType(tag = ActionEvent.NETWORK_ERROR , clazz = String.class)
+    })
+    public void onPostAccept(Object tag, Object actionEvent){
+        showToastMessage("网络错误,错误码为：" + actionEvent.toString());
+    }
+
 }

@@ -9,6 +9,7 @@ import com.wangjie.androidinject.annotation.present.AIAppCompatActivity;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
 import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
 import com.wangjie.rxandroideventssample.events.ActionEvent;
+import com.wangjie.rxandroideventssample.events.NetWorkEvent;
 import com.wangjie.rxandroideventssample.global.APIInterface;
 import com.wangjie.rxandroideventssample.global.AppManager;
 import com.wangjie.rxandroideventssample.provider.model.ResponseEntity;
@@ -23,7 +24,7 @@ import java.lang.reflect.Method;
  * Email: tiantian.china.2@gmail.com
  * Date: 6/10/15.
  */
-public class BaseActivity extends ParentActivity implements RxBusSample,BaseViewer{
+public class BaseActivity extends AIAppCompatActivity implements BaseViewer{
     private RxBusAnnotationManager rxBusAnnotationManager;
     private static final String TAG = BaseActivity.class.getSimpleName();
 
@@ -42,6 +43,14 @@ public class BaseActivity extends ParentActivity implements RxBusSample,BaseView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppManager.getAppManager().addActivity(this);
+        if (rxBusAnnotationManager!=null){
+            try {
+                Method method = this.getClass().getMethod("netWorkError",Object.class,NetWorkEvent.class);
+                rxBusAnnotationManager.parserObservableEventAnnotations(method);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -52,9 +61,9 @@ public class BaseActivity extends ParentActivity implements RxBusSample,BaseView
     @Override
     protected void onStop() {
         super.onStop();
-        if (null != rxBusAnnotationManager) {
-            rxBusAnnotationManager.stopClear();
-        }
+//        if (null != rxBusAnnotationManager) {
+//            rxBusAnnotationManager.stopClear();
+//        }
     }
 
     @Override
@@ -66,18 +75,23 @@ public class BaseActivity extends ParentActivity implements RxBusSample,BaseView
         AppManager.getAppManager().finishActivity(this);
     }
 
-    @Override
-    public void onPostAccept(Object tag, Object event) {
-
-    }
-
+    //present中调用主线程的error
     @Override
     public void error(String error) {
 
     }
 
+    //present中调用主线程的noLogin
     @Override
-    public void noLogin() {
+    public void noLogin(String msg) {
 
     }
+
+    //通过RxBus返回的信息
+    @Accept
+    public void netWorkError(Object tag, NetWorkEvent netWorkEvent) {
+        showToastMessage("网络错误，错误信息："+netWorkEvent.getStrMsg());
+    }
+
+
 }

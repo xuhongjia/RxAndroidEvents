@@ -1,5 +1,7 @@
 package com.wangjie.rxandroideventssample.provider.model;
 
+import com.kymjs.rxvolley.rx.Result;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -69,6 +71,14 @@ public class ResponseEntity {
 
 
     public Object getData() {
+        if(data instanceof String && data.equals(""))
+        {
+            return new JSONArray();
+        }
+        return data;
+    }
+
+    public Object getData(Result result){
         if(data instanceof String && data.equals(""))
         {
             return new JSONArray();

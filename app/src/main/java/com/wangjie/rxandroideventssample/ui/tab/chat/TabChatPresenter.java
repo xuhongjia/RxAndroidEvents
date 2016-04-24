@@ -2,6 +2,7 @@ package com.wangjie.rxandroideventssample.ui.tab.chat;
 
 import android.util.Log;
 
+import com.google.gson.reflect.TypeToken;
 import com.wangjie.androidbucket.log.Logger;
 import com.wangjie.androidbucket.mvp.ABNoneInteractorImpl;
 import com.wangjie.rxandroideventssample.api.VolleyApi;
@@ -37,21 +38,22 @@ public class TabChatPresenter extends BasePresenter<TabChatViewer, ABNoneInterac
 
     //发送请求
     void getValidate(String phone){
-        VolleyApi api=new VolleyApi(APIInterface.SEND_VALIDATE_CODE_API);
         MyHttpParams param= new MyHttpParams("mobile", phone);
-        goSubscription(api.post(param)
-                .subscribe(new Action1<ResponseEntity>() {
-                    @Override
-                    public void call(ResponseEntity ResponseEntity) {
-                        Log.i("kymjs", "======网络请求" + ResponseEntity.getMsg());
-                        AppManager.getAppManager().getTopActivity().getClass().getName();
-                    }
+        goSubscription(builder
+                .setType(PhoneValidate.class)
+                .setUrl(APIInterface.SEND_VALIDATE_CODE_API)
+                .request()
+                .post(param)
+                .subscribe(phoneValidate -> {
+                    Log.i("kymjs", "======网络请求" + ((PhoneValidate)phoneValidate).getCode());
+                    AppManager.getAppManager().getTopActivity().getClass().getName();
                 }));
     }
 
     void sendValidate(PhoneValidate phoneValidate){
         goSubscription(
-                Observable.just(phoneValidate)
+                Observable
+                        .just(phoneValidate)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(viewer::validateReturn, throwable -> Logger.w(TAG, "error: " + throwable.getMessage()))
         );

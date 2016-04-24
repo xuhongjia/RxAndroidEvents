@@ -67,14 +67,13 @@ public class TabChatContainer extends TabContainer implements TabChatViewer{
         Toast.makeText(getContext(),phoneValidate.getCode()+"",Toast.LENGTH_SHORT).show();
     }
 
-    //网络请求返回的callback
-    @Accept
-    public void onPostAccept(Object tag , Object event){
-        super.onPostAccept(tag,event);
-        switch (tag.toString()){
-            case APIInterface.SEND_VALIDATE_CODE_API:
-                validateReturn(gson.fromJson(event.toString(), PhoneValidate.class));
-                break;
-        }
-    }
+//    //网络请求返回的callback
+//    @Accept
+//    public void onPostAccept(Object tag , Object event){
+//        switch (tag.toString()){
+//            case APIInterface.SEND_VALIDATE_CODE_API:
+//                validateReturn(gson.fromJson(event.toString(), PhoneValidate.class));
+//                break;
+//        }
+//    }
 }
