@@ -23,7 +23,7 @@ import java.lang.reflect.Method;
  * Email: tiantian.china.2@gmail.com
  * Date: 6/10/15.
  */
-public class BaseActivity extends AIAppCompatActivity implements RxBusSample,BaseViewer{
+public class BaseActivity extends ParentActivity implements RxBusSample,BaseViewer{
     private RxBusAnnotationManager rxBusAnnotationManager;
     private static final String TAG = BaseActivity.class.getSimpleName();
 
@@ -41,6 +41,12 @@ public class BaseActivity extends AIAppCompatActivity implements RxBusSample,Bas
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppManager.getAppManager().addActivity(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -57,18 +63,12 @@ public class BaseActivity extends AIAppCompatActivity implements RxBusSample,Bas
         if (null != rxBusAnnotationManager) {
             rxBusAnnotationManager.clear();
         }
+        AppManager.getAppManager().finishActivity(this);
     }
 
     @Override
     public void onPostAccept(Object tag, Object event) {
-        switch (tag.toString()){
-            case ActionEvent.ERROR:
-                showToastMessage(event.toString());
-                return;
-            case ActionEvent.NO_LOGIN:
-                showToastMessage("没有登录");
-                return;
-        }
+
     }
 
     @Override

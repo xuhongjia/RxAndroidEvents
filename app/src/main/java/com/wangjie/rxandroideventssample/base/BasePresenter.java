@@ -11,7 +11,10 @@ import com.wangjie.rxandroideventssample.rxbus.RxBus;
 import com.wangjie.rxandroideventssample.rxbus.RxBusAnnotationManager;
 import com.wangjie.rxandroideventssample.rxbus.RxBusSample;
 
+import rx.Observable;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 import java.lang.reflect.Method;
 import java.util.HashSet;
@@ -23,7 +26,7 @@ import java.util.Set;
  * Email: tiantian.china.2@gmail.com
  * Date: 6/10/15.
  */
-public class BasePresenter<V extends ABActivityViewer, I extends ABInteractor> extends ABBasePresenter<V, I>  {
+public class BasePresenter<V extends BaseViewer, I extends ABInteractor> extends ABBasePresenter<V, I>  {
     private static final String TAG = BasePresenter.class.getSimpleName();
 
     private Set<Subscription> subscriptions = new HashSet<>();
@@ -57,6 +60,13 @@ public class BasePresenter<V extends ABActivityViewer, I extends ABInteractor> e
         }
     }
 
+    public void error(String msg){
+        viewer.error(msg);
+    }
+
+    public void noLogin(){
+        viewer.noLogin();
+    }
 
 
 }
