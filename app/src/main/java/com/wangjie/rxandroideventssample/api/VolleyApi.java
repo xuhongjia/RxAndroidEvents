@@ -1,17 +1,11 @@
 package com.wangjie.rxandroideventssample.api;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
-import com.google.gson.internal.$Gson$Types;
-import com.google.gson.reflect.TypeToken;
 import com.kymjs.rxvolley.RxVolley;
 import com.kymjs.rxvolley.client.HttpCallback;
-import com.kymjs.rxvolley.client.HttpParams;
 import com.kymjs.rxvolley.rx.Result;
 import com.wangjie.rxandroideventssample.base.BasePresenter;
 import com.wangjie.rxandroideventssample.base.BaseViewer;
-import com.wangjie.rxandroideventssample.events.ActionEvent;
 import com.wangjie.rxandroideventssample.events.NetWorkEvent;
 import com.wangjie.rxandroideventssample.global.GsonManager;
 import com.wangjie.rxandroideventssample.provider.model.ResponseEntity;
@@ -19,12 +13,10 @@ import com.wangjie.rxandroideventssample.rxbus.RxBus;
 import com.wangjie.rxandroideventssample.utils.MyHttpParams;
 
 
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**

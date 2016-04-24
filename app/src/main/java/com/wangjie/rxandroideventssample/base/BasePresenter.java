@@ -3,10 +3,6 @@ package com.wangjie.rxandroideventssample.base;
 import com.wangjie.androidbucket.log.Logger;
 import com.wangjie.androidbucket.mvp.ABBasePresenter;
 import com.wangjie.androidbucket.mvp.ABInteractor;
-import com.wangjie.androidbucket.services.NetworkUtils;
-import com.wangjie.androidbucket.services.network.http.ABHttpUtil;
-import com.wangjie.androidbucket.services.network.http.HttpAccessParameter;
-import com.wangjie.androidbucket.services.network.http.HttpConfig;
 import com.wangjie.rxandroideventssample.api.VolleyApi;
 
 import rx.Observable;
@@ -16,7 +12,6 @@ import rx.schedulers.Schedulers;
 
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
 public class BasePresenter<V extends BaseViewer, I extends ABInteractor> extends ABBasePresenter<V, I>  {
