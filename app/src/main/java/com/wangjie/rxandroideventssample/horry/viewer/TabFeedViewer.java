@@ -1,7 +1,5 @@
-package com.wangjie.rxandroideventssample.ui.tab.feed;
+package com.wangjie.rxandroideventssample.horry.viewer;
 
-import com.wangjie.androidbucket.mvp.ABActivityViewer;
-import com.wangjie.rxandroideventssample.base.BaseViewer;
 import com.wangjie.rxandroideventssample.provider.model.Feed;
 
 import java.util.List;

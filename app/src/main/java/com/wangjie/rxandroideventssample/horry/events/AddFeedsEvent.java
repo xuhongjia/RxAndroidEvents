@@ -1,4 +1,4 @@
-package com.wangjie.rxandroideventssample.events;
+package com.wangjie.rxandroideventssample.horry.events;
 
 import com.wangjie.rxandroideventssample.provider.model.Feed;
 

@@ -31,14 +31,14 @@ public class ParentActivity extends ABAppCompatActivity implements AIPresent, Ca
         super.onCreate(savedInstanceState);
         this.context = this;
         this.clazz = this.getClass();
-        (new AnnotationManager(this)).initAnnotations();
+//        (new AnnotationManager(this)).initAnnotations();
         Log.d(TAG, "[" + this.clazz.getSimpleName() + "]onCreate supper(parser annotations) takes: " + (System.currentTimeMillis() - start) + "ms");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-//        (new AnnotationManager(this)).initAnnotations();
+        (new AnnotationManager(this)).initAnnotations();
     }
 
     public Context getContext() {

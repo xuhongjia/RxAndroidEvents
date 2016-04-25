@@ -1,15 +1,16 @@
-package com.wangjie.rxandroideventssample.api;
+package com.wangjie.rxandroideventssample.horry.api;
 
 import com.google.gson.Gson;
 import com.kymjs.rxvolley.RxVolley;
 import com.kymjs.rxvolley.client.HttpCallback;
 import com.kymjs.rxvolley.rx.Result;
-import com.wangjie.rxandroideventssample.base.BasePresenter;
-import com.wangjie.rxandroideventssample.base.BaseViewer;
-import com.wangjie.rxandroideventssample.events.NetWorkEvent;
+import com.wangjie.rxandroideventssample.horry.events.ActionEvent;
+import com.wangjie.rxandroideventssample.horry.persenter.BasePresenter;
+import com.wangjie.rxandroideventssample.horry.viewer.BaseViewer;
+import com.wangjie.rxandroideventssample.horry.events.NetWorkEvent;
 import com.wangjie.rxandroideventssample.global.GsonManager;
 import com.wangjie.rxandroideventssample.provider.model.ResponseEntity;
-import com.wangjie.rxandroideventssample.rxbus.RxBus;
+import com.wangjie.rxandroideventssample.horry.rxbus.RxBus;
 import com.wangjie.rxandroideventssample.utils.MyHttpParams;
 
 
@@ -27,9 +28,9 @@ public class VolleyApi {
     private RxVolley.Builder rxVolleyBuilder=new RxVolley.Builder();
     private Gson gson = GsonManager.getInstance().getGson();
     private Type type;
-    private BaseViewer viewer;
+//    private BaseViewer viewer;
     private ResponseEntity responseEntity;
-    private BasePresenter presenter;
+//    private BasePresenter presenter;
     public HttpCallback callback = new HttpCallback() {
         @Override
         public void onFailure(int errorNo, String strMsg) {
@@ -116,10 +117,12 @@ public class VolleyApi {
         ResponseEntity.ERROR code = ResponseEntity.ERROR.integerToEnum(responseEntity.getError());
         switch (code){
             case FAILED://返回错误信息
-                presenter.error(responseEntity.getMsg());
+                RxBus.get().post(ActionEvent.ERROR,responseEntity.getMsg());
+//                presenter.error(responseEntity.getMsg());
                 return false;
             case NOT_LOGIN://提示没有登陆
-                presenter.noLogin(responseEntity.getMsg());
+                RxBus.get().post(ActionEvent.NO_LOGIN,responseEntity.getMsg());
+//                presenter.noLogin(responseEntity.getMsg());
                 return false;
         }
         return true;
@@ -144,14 +147,14 @@ public class VolleyApi {
     public void setType(Type type) {
         this.type = type;
     }
-
-    public BasePresenter getPresenter() {
-        return presenter;
-    }
-
-    public void setPresenter(BasePresenter presenter) {
-        this.presenter = presenter;
-    }
+//
+//    public BasePresenter getPresenter() {
+//        return presenter;
+//    }
+//
+//    public void setPresenter(BasePresenter presenter) {
+//        this.presenter = presenter;
+//    }
 
     public static class Builder{
         VolleyApi volleyApi;
@@ -169,13 +172,13 @@ public class VolleyApi {
             return this;
         }
 
-        public Builder setPresenter(BasePresenter basePresenter){
-            this.volleyApi.setPresenter(basePresenter);
-            return this;
-        }
+//        public Builder setPresenter(BasePresenter basePresenter){
+//            this.volleyApi.setPresenter(basePresenter);
+//            return this;
+//        }
 
         //返回VolleyApi对象
-        public VolleyApi request(){
+        public VolleyApi getVolley(){
             return this.volleyApi;
         }
     }

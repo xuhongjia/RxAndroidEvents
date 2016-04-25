@@ -1,4 +1,4 @@
-package com.wangjie.rxandroideventssample.base;
+package com.wangjie.rxandroideventssample.horry.viewer;
 
 import com.wangjie.androidbucket.mvp.ABActivityViewer;
 

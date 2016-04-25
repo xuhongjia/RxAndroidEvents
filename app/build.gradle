@@ -15,6 +15,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -42,7 +43,7 @@ dependencies {
     compile 'com.github.wangjiegulu:AndroidInject:1.0.5'
     //    compile 'io.reactivex:rxjava:1.0.12'
     //    compile 'io.reactivex:rxandroid:0.24.0'
-    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.0.2'
+//    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.0.2'
     compile 'com.android.support:design:23.3.0'
     //    compile 'com.zhy:okhttputils:2.0.2'
     compile 'com.google.code.gson:gson:2.5'

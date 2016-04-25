@@ -1,4 +1,4 @@
-package com.wangjie.rxandroideventssample.events;
+package com.wangjie.rxandroideventssample.horry.events;
 
 /**
  * Created by xuhon on 2016/4/24.

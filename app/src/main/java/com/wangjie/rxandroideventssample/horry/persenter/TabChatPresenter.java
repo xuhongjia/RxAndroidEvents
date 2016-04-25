@@ -1,31 +1,20 @@
-package com.wangjie.rxandroideventssample.ui.tab.chat;
+package com.wangjie.rxandroideventssample.horry.persenter;
 
 import android.util.Log;
 
-import com.google.gson.reflect.TypeToken;
 import com.wangjie.androidbucket.log.Logger;
 import com.wangjie.androidbucket.mvp.ABNoneInteractorImpl;
-import com.wangjie.rxandroideventssample.api.VolleyApi;
-import com.wangjie.rxandroideventssample.base.BasePresenter;
+
 import com.wangjie.rxandroideventssample.global.APIInterface;
 import com.wangjie.rxandroideventssample.global.AppManager;
-import com.wangjie.rxandroideventssample.provider.model.Feed;
 import com.wangjie.rxandroideventssample.provider.model.PhoneValidate;
-import com.wangjie.rxandroideventssample.provider.model.ResponseEntity;
-import com.wangjie.rxandroideventssample.ui.tab.feed.TabFeedViewer;
+import com.wangjie.rxandroideventssample.horry.viewer.TabChatViewer;
 import com.wangjie.rxandroideventssample.utils.MyHttpParams;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by xuhon on 2016/4/22.
@@ -37,16 +26,15 @@ public class TabChatPresenter extends BasePresenter<TabChatViewer, ABNoneInterac
     private static final int ONE_HOUR = 1000 * 60 * 60;
 
     //发送请求
-    void getValidate(String phone){
+    public void getValidate(String phone){
         MyHttpParams param= new MyHttpParams("mobile", phone);
-        goSubscription(builder
-                .setType(PhoneValidate.class)
-                .setUrl(APIInterface.SEND_VALIDATE_CODE_API)
-                .request()
+        goSubscription(
+                builder.setType(PhoneValidate.class).setUrl(APIInterface.SEND_VALIDATE_CODE_API).getVolley()
                 .post(param)
                 .subscribe(phoneValidate -> {
                     Log.i("kymjs", "======网络请求" + ((PhoneValidate)phoneValidate).getCode());
                     AppManager.getAppManager().getTopActivity().getClass().getName();
+                    viewer.validateReturn((PhoneValidate) phoneValidate);
                 }));
     }
 

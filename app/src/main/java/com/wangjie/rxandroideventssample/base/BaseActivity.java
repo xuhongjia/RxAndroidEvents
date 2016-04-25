@@ -5,13 +5,15 @@ import android.os.Bundle;
 import com.wangjie.androidinject.annotation.present.AIAppCompatActivity;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
 import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
-import com.wangjie.rxandroideventssample.events.NetWorkEvent;
+import com.wangjie.rxandroideventssample.horry.events.ActionEvent;
+import com.wangjie.rxandroideventssample.horry.events.NetWorkEvent;
 import com.wangjie.rxandroideventssample.global.AppManager;
-import com.wangjie.rxandroideventssample.rxbus.RxBusAnnotationManager;
+import com.wangjie.rxandroideventssample.horry.rxbus.RxBusAnnotationManager;
+import com.wangjie.rxandroideventssample.horry.viewer.BaseViewer;
 
 import java.lang.reflect.Method;
 
-public class BaseActivity extends AIAppCompatActivity implements BaseViewer{
+public class BaseActivity extends AIAppCompatActivity implements BaseViewer {
     private RxBusAnnotationManager rxBusAnnotationManager;
     private static final String TAG = BaseActivity.class.getSimpleName();
 
@@ -34,6 +36,8 @@ public class BaseActivity extends AIAppCompatActivity implements BaseViewer{
             try {
                 Method method = this.getClass().getMethod("netWorkError",Object.class,NetWorkEvent.class);
                 rxBusAnnotationManager.parserObservableEventAnnotations(method);
+                Method method2 = this.getClass().getMethod("error",Object.class,Object.class);
+                rxBusAnnotationManager.parserObservableEventAnnotations(method2);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -80,5 +84,12 @@ public class BaseActivity extends AIAppCompatActivity implements BaseViewer{
         showToastMessage("网络错误，错误信息："+netWorkEvent.getStrMsg());
     }
 
+    @Accept({
+            @AcceptType(tag = ActionEvent.ERROR , clazz = String.class),
+            @AcceptType(tag = ActionEvent.NO_LOGIN ,clazz = String.class)
+    })
+    public void error(Object tag, Object event){
+        showToastMessage(event.toString());
+    }
 
 }

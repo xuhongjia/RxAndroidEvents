@@ -1,9 +1,10 @@
-package com.wangjie.rxandroideventssample.ui.tab.feed;
+package com.wangjie.rxandroideventssample.horry.persenter;
 
 import com.wangjie.androidbucket.log.Logger;
 import com.wangjie.androidbucket.mvp.ABNoneInteractorImpl;
-import com.wangjie.rxandroideventssample.base.BasePresenter;
 import com.wangjie.rxandroideventssample.provider.model.Feed;
+
+import com.wangjie.rxandroideventssample.horry.viewer.TabFeedViewer;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -23,7 +24,7 @@ public class TabFeedPresenter extends BasePresenter<TabFeedViewer, ABNoneInterac
     private Random random = new Random();
     private static final int ONE_HOUR = 1000 * 60 * 60;
 
-    void loadFeeds(int size) {
+    public void loadFeeds(int size) {
         goSubscription(
                 Observable.from(testLoadFeedsFromNet(size))
                         .subscribeOn(Schedulers.newThread())

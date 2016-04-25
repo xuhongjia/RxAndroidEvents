@@ -1,4 +1,4 @@
-package com.wangjie.rxandroideventssample.rxbus;
+package com.wangjie.rxandroideventssample.horry.rxbus;
 
 import android.os.Handler;
 import com.wangjie.androidbucket.log.Logger;

@@ -1,7 +1,6 @@
 package com.wangjie.rxandroideventssample.ui.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -15,14 +14,13 @@ import com.wangjie.rxandroideventssample.R;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
 import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
 import com.wangjie.rxandroideventssample.base.BaseActivity;
-import com.wangjie.rxandroideventssample.events.ActionEvent;
-import com.wangjie.rxandroideventssample.events.AddFeedsEvent;
-import com.wangjie.rxandroideventssample.events.DeleteFeedsEvent;
-import com.wangjie.rxandroideventssample.events.FeedItemClickEvent;
-import com.wangjie.rxandroideventssample.global.APIInterface;
+import com.wangjie.rxandroideventssample.horry.events.ActionEvent;
+import com.wangjie.rxandroideventssample.horry.events.AddFeedsEvent;
+import com.wangjie.rxandroideventssample.horry.events.DeleteFeedsEvent;
+import com.wangjie.rxandroideventssample.horry.events.FeedItemClickEvent;
 import com.wangjie.rxandroideventssample.provider.model.Feed;
-import com.wangjie.rxandroideventssample.provider.model.ResponseEntity;
-import com.wangjie.rxandroideventssample.rxbus.RxBus;
+
+import com.wangjie.rxandroideventssample.horry.rxbus.RxBus;
 import com.wangjie.rxandroideventssample.ui.adpater.TabAdapter;
 import com.wangjie.rxandroideventssample.ui.tab.TabContainer;
 import com.wangjie.rxandroideventssample.ui.tab.chat.TabChatContainer;

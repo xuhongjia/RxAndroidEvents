@@ -1,11 +1,6 @@
-package com.wangjie.rxandroideventssample.ui.tab.chat;
+package com.wangjie.rxandroideventssample.horry.viewer;
 
-import com.wangjie.androidbucket.mvp.ABActivityViewer;
-import com.wangjie.rxandroideventssample.base.BaseViewer;
-import com.wangjie.rxandroideventssample.provider.model.Feed;
 import com.wangjie.rxandroideventssample.provider.model.PhoneValidate;
-
-import java.util.List;
 
 /**
  * Author: wangjie

@@ -1,17 +1,14 @@
 package com.wangjie.rxandroideventssample.application;
 
 import android.app.Application;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
 //import com.alipay.euler.andfix.patch.PatchManager;
 import com.wangjie.rxandroideventssample.annotation.accept.DefaultAcceptConfiguration;
-import com.wangjie.rxandroideventssample.rxbus.RxBus;
+import com.wangjie.rxandroideventssample.horry.rxbus.RxBus;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 

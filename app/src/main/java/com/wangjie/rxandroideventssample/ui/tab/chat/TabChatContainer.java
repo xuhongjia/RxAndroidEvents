@@ -10,19 +10,11 @@ import com.wangjie.androidinject.annotation.annotations.base.AILayout;
 import com.wangjie.androidinject.annotation.annotations.base.AIView;
 import com.wangjie.androidinject.annotation.annotations.mvp.AIPresenter;
 import com.wangjie.rxandroideventssample.R;
-import com.wangjie.rxandroideventssample.annotation.accept.Accept;
-import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
-import com.wangjie.rxandroideventssample.global.APIInterface;
-import com.wangjie.rxandroideventssample.global.GsonManager;
-import com.wangjie.rxandroideventssample.provider.model.Feed;
 import com.wangjie.rxandroideventssample.provider.model.PhoneValidate;
-import com.wangjie.rxandroideventssample.provider.model.ResponseEntity;
-import com.wangjie.rxandroideventssample.ui.adpater.FeedAdapter;
 import com.wangjie.rxandroideventssample.ui.tab.TabContainer;
-import com.wangjie.rxandroideventssample.ui.tab.feed.TabFeedPresenter;
-import com.wangjie.rxandroideventssample.ui.tab.feed.TabFeedViewer;
 
-import java.util.List;
+import com.wangjie.rxandroideventssample.horry.persenter.TabChatPresenter;
+import com.wangjie.rxandroideventssample.horry.viewer.TabChatViewer;
 
 /**
  * Author: wangjie
@@ -30,7 +22,7 @@ import java.util.List;
  * Date: 6/10/15.
  */
 @AILayout(R.layout.tab_chat)
-public class TabChatContainer extends TabContainer implements TabChatViewer{
+public class TabChatContainer extends TabContainer implements TabChatViewer {
     private static final String TAG = TabChatContainer.class.getSimpleName();
 
     @AIView(R.id.phone)

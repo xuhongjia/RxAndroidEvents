@@ -12,28 +12,22 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.wangjie.androidbucket.mvp.ABActivityViewer;
 import com.wangjie.androidbucket.mvp.ABBasePresenter;
 import com.wangjie.androidinject.annotation.core.base.AnnotationManager;
 import com.wangjie.androidinject.annotation.present.AIPresent;
 import com.wangjie.androidinject.annotation.present.common.CallbackSample;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
-import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
-import com.wangjie.rxandroideventssample.base.BaseViewer;
-import com.wangjie.rxandroideventssample.events.ActionEvent;
-import com.wangjie.rxandroideventssample.events.NetWorkEvent;
+import com.wangjie.rxandroideventssample.horry.events.ActionEvent;
+import com.wangjie.rxandroideventssample.horry.rxbus.RxBus;
+import com.wangjie.rxandroideventssample.horry.viewer.BaseViewer;
 import com.wangjie.rxandroideventssample.global.GsonManager;
-import com.wangjie.rxandroideventssample.provider.model.Feed;
-import com.wangjie.rxandroideventssample.provider.model.ResponseEntity;
-import com.wangjie.rxandroideventssample.rxbus.RxBusAnnotationManager;
-import com.wangjie.rxandroideventssample.rxbus.RxBusSample;
+
+import com.wangjie.rxandroideventssample.horry.rxbus.RxBusAnnotationManager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.List;
 
 /**
  * Author: wangjie
@@ -222,7 +216,7 @@ public class TabContainer extends FrameLayout implements AIPresent, CallbackSamp
 
     @Override
     public void error(String error) {
-        showToastMessage(error);
+        RxBus.get().post(ActionEvent.ERROR,error);
     }
 
     @Override
