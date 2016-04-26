@@ -1,4 +1,4 @@
-package com.wangjie.rxandroideventssample.horry.events;
+package com.wangjie.rxandroideventssample.mvp.events;
 
 public class ActionEvent {
     public static final String NETWORK_ERROR = "NETWORK-ERROR";

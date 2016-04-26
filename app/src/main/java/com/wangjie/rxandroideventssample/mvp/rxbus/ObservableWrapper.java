@@ -1,4 +1,4 @@
-package com.wangjie.rxandroideventssample.horry.rxbus;
+package com.wangjie.rxandroideventssample.mvp.rxbus;
 
 import rx.Observable;
 

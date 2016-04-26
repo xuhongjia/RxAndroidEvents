@@ -14,13 +14,13 @@ import com.wangjie.rxandroideventssample.R;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
 import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
 import com.wangjie.rxandroideventssample.base.BaseActivity;
-import com.wangjie.rxandroideventssample.horry.events.ActionEvent;
-import com.wangjie.rxandroideventssample.horry.events.AddFeedsEvent;
-import com.wangjie.rxandroideventssample.horry.events.DeleteFeedsEvent;
-import com.wangjie.rxandroideventssample.horry.events.FeedItemClickEvent;
+import com.wangjie.rxandroideventssample.mvp.events.ActionEvent;
+import com.wangjie.rxandroideventssample.mvp.events.AddFeedsEvent;
+import com.wangjie.rxandroideventssample.mvp.events.DeleteFeedsEvent;
+import com.wangjie.rxandroideventssample.mvp.events.FeedItemClickEvent;
 import com.wangjie.rxandroideventssample.provider.model.Feed;
 
-import com.wangjie.rxandroideventssample.horry.rxbus.RxBus;
+import com.wangjie.rxandroideventssample.mvp.rxbus.RxBus;
 import com.wangjie.rxandroideventssample.ui.adpater.TabAdapter;
 import com.wangjie.rxandroideventssample.ui.tab.TabContainer;
 import com.wangjie.rxandroideventssample.ui.tab.chat.TabChatContainer;

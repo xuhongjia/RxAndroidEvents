@@ -15,15 +15,15 @@ import com.wangjie.rxandroideventssample.R;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
 import com.wangjie.rxandroideventssample.annotation.accept.AcceptScheduler;
 import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
-import com.wangjie.rxandroideventssample.horry.events.ActionEvent;
-import com.wangjie.rxandroideventssample.horry.events.AddFeedsEvent;
-import com.wangjie.rxandroideventssample.horry.events.DeleteFeedsEvent;
-import com.wangjie.rxandroideventssample.horry.events.FeedItemClickEvent;
+import com.wangjie.rxandroideventssample.mvp.events.ActionEvent;
+import com.wangjie.rxandroideventssample.mvp.events.AddFeedsEvent;
+import com.wangjie.rxandroideventssample.mvp.events.DeleteFeedsEvent;
+import com.wangjie.rxandroideventssample.mvp.events.FeedItemClickEvent;
 import com.wangjie.rxandroideventssample.provider.model.Feed;
 
-import com.wangjie.rxandroideventssample.horry.persenter.TabFeedPresenter;
-import com.wangjie.rxandroideventssample.horry.rxbus.RxBus;
-import com.wangjie.rxandroideventssample.horry.viewer.TabFeedViewer;
+import com.wangjie.rxandroideventssample.mvp.persenter.TabFeedPresenter;
+import com.wangjie.rxandroideventssample.mvp.rxbus.RxBus;
+import com.wangjie.rxandroideventssample.mvp.viewer.TabFeedViewer;
 
 import com.wangjie.rxandroideventssample.ui.adpater.FeedAdapter;
 import com.wangjie.rxandroideventssample.ui.tab.TabContainer;

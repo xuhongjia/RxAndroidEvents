@@ -1,10 +1,10 @@
-package com.wangjie.rxandroideventssample.horry.persenter;
+package com.wangjie.rxandroideventssample.mvp.persenter;
 
 import com.wangjie.androidbucket.log.Logger;
 import com.wangjie.androidbucket.mvp.ABNoneInteractorImpl;
 import com.wangjie.rxandroideventssample.provider.model.Feed;
 
-import com.wangjie.rxandroideventssample.horry.viewer.TabFeedViewer;
+import com.wangjie.rxandroideventssample.mvp.viewer.TabFeedViewer;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;

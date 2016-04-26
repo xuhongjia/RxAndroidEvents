@@ -1,4 +1,4 @@
-package com.wangjie.rxandroideventssample.horry.events;
+package com.wangjie.rxandroideventssample.mvp.events;
 
 import java.io.Serializable;
 

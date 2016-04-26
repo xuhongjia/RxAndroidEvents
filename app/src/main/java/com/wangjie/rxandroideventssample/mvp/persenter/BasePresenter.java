@@ -1,17 +1,13 @@
-package com.wangjie.rxandroideventssample.horry.persenter;
+package com.wangjie.rxandroideventssample.mvp.persenter;
 
 import com.wangjie.androidbucket.log.Logger;
 import com.wangjie.androidbucket.mvp.ABBasePresenter;
 import com.wangjie.androidbucket.mvp.ABInteractor;
-import com.wangjie.rxandroideventssample.horry.api.VolleyApi;
+import com.wangjie.rxandroideventssample.mvp.api.VolleyApi;
 
-import com.wangjie.rxandroideventssample.horry.events.ActionEvent;
-import com.wangjie.rxandroideventssample.horry.rxbus.RxBus;
-import com.wangjie.rxandroideventssample.horry.viewer.BaseViewer;
-import rx.Observable;
+import com.wangjie.rxandroideventssample.mvp.viewer.BaseViewer;
+
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 import java.util.HashSet;
 import java.util.Iterator;

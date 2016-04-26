@@ -13,8 +13,8 @@ import com.wangjie.rxandroideventssample.R;
 import com.wangjie.rxandroideventssample.provider.model.PhoneValidate;
 import com.wangjie.rxandroideventssample.ui.tab.TabContainer;
 
-import com.wangjie.rxandroideventssample.horry.persenter.TabChatPresenter;
-import com.wangjie.rxandroideventssample.horry.viewer.TabChatViewer;
+import com.wangjie.rxandroideventssample.mvp.persenter.TabChatPresenter;
+import com.wangjie.rxandroideventssample.mvp.viewer.TabChatViewer;
 
 /**
  * Author: wangjie

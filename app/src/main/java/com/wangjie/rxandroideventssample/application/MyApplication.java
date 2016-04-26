@@ -7,7 +7,7 @@ import android.util.Log;
 
 //import com.alipay.euler.andfix.patch.PatchManager;
 import com.wangjie.rxandroideventssample.annotation.accept.DefaultAcceptConfiguration;
-import com.wangjie.rxandroideventssample.horry.rxbus.RxBus;
+import com.wangjie.rxandroideventssample.mvp.rxbus.RxBus;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;

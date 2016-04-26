@@ -1,20 +1,17 @@
-package com.wangjie.rxandroideventssample.horry.persenter;
-
-import android.util.Log;
+package com.wangjie.rxandroideventssample.mvp.persenter;
 
 import com.wangjie.androidbucket.log.Logger;
 import com.wangjie.androidbucket.mvp.ABNoneInteractorImpl;
 
-import com.wangjie.rxandroideventssample.global.APIInterface;
-import com.wangjie.rxandroideventssample.global.AppManager;
+import com.wangjie.rxandroideventssample.mvp.api.UserApi;
 import com.wangjie.rxandroideventssample.provider.model.PhoneValidate;
-import com.wangjie.rxandroideventssample.horry.viewer.TabChatViewer;
-import com.wangjie.rxandroideventssample.utils.MyHttpParams;
+import com.wangjie.rxandroideventssample.mvp.viewer.TabChatViewer;
 
 import java.util.Random;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 
 /**
  * Created by xuhon on 2016/4/22.
@@ -27,15 +24,21 @@ public class TabChatPresenter extends BasePresenter<TabChatViewer, ABNoneInterac
 
     //发送请求
     public void getValidate(String phone){
-        MyHttpParams param= new MyHttpParams("mobile", phone);
-        goSubscription(
-                builder.setType(PhoneValidate.class).setUrl(APIInterface.SEND_VALIDATE_CODE_API).getVolley()
-                .post(param)
-                .subscribe(phoneValidate -> {
-                    Log.i("kymjs", "======网络请求" + ((PhoneValidate)phoneValidate).getCode());
-                    AppManager.getAppManager().getTopActivity().getClass().getName();
-                    viewer.validateReturn((PhoneValidate) phoneValidate);
-                }));
+        UserApi.sendValidate(phone, new Action1<Object>() {
+            @Override
+            public void call(Object o) {
+                viewer.validateReturn((PhoneValidate) o);
+            }
+        });
+
+//        goSubscription(
+//                builder.setType(PhoneValidate.class).setUrl(APIInterface.SEND_VALIDATE_CODE_API).getVolley()
+//                .post(param)
+//                .subscribe(phoneValidate -> {
+//                    Log.i("kymjs", "======网络请求" + ((PhoneValidate)phoneValidate).getCode());
+//                    AppManager.getAppManager().getTopActivity().getClass().getName();
+//                    viewer.validateReturn((PhoneValidate) phoneValidate);
+//                }));
     }
 
     void sendValidate(PhoneValidate phoneValidate){

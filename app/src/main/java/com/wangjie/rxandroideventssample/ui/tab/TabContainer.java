@@ -19,12 +19,12 @@ import com.wangjie.androidinject.annotation.core.base.AnnotationManager;
 import com.wangjie.androidinject.annotation.present.AIPresent;
 import com.wangjie.androidinject.annotation.present.common.CallbackSample;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
-import com.wangjie.rxandroideventssample.horry.events.ActionEvent;
-import com.wangjie.rxandroideventssample.horry.rxbus.RxBus;
-import com.wangjie.rxandroideventssample.horry.viewer.BaseViewer;
+import com.wangjie.rxandroideventssample.mvp.events.ActionEvent;
+import com.wangjie.rxandroideventssample.mvp.rxbus.RxBus;
+import com.wangjie.rxandroideventssample.mvp.viewer.BaseViewer;
 import com.wangjie.rxandroideventssample.global.GsonManager;
 
-import com.wangjie.rxandroideventssample.horry.rxbus.RxBusAnnotationManager;
+import com.wangjie.rxandroideventssample.mvp.rxbus.RxBusAnnotationManager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

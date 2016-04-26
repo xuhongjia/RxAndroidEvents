@@ -5,11 +5,11 @@ import android.os.Bundle;
 import com.wangjie.androidinject.annotation.present.AIAppCompatActivity;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
 import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
-import com.wangjie.rxandroideventssample.horry.events.ActionEvent;
-import com.wangjie.rxandroideventssample.horry.events.NetWorkEvent;
+import com.wangjie.rxandroideventssample.mvp.events.ActionEvent;
+import com.wangjie.rxandroideventssample.mvp.events.NetWorkEvent;
 import com.wangjie.rxandroideventssample.global.AppManager;
-import com.wangjie.rxandroideventssample.horry.rxbus.RxBusAnnotationManager;
-import com.wangjie.rxandroideventssample.horry.viewer.BaseViewer;
+import com.wangjie.rxandroideventssample.mvp.rxbus.RxBusAnnotationManager;
+import com.wangjie.rxandroideventssample.mvp.viewer.BaseViewer;
 
 import java.lang.reflect.Method;
 
