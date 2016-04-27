@@ -237,7 +237,7 @@ public class VolleyApi {
 //            return this;
 //        }
 
-        public Builder setSubscriber(Action1<Object> action1){
+        public Builder setAction(Action1<Object> action1){
             this.volleyApi.setAction1(action1);
             return this;
         }
