@@ -24,6 +24,9 @@ android {
         }
     }
 
+    dataBinding{
+        enabled = true
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -34,7 +37,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.kymjs.rxvolley:rxvolley:1.0.9'
-    compile 'com.kymjs.rxvolley:okhttp:1.0.9'
+//    compile 'com.kymjs.rxvolley:okhttp:1.0.9'
     compile 'com.kymjs.rxvolley:bitmapcore:1.0.9'
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.android.support:appcompat-v7:23.3.0'
@@ -48,5 +51,5 @@ dependencies {
     //    compile 'com.zhy:okhttputils:2.0.2'
     compile 'com.google.code.gson:gson:2.5'
     //    compile 'com.alipay.euler:andfix:0.3.1'
-    
+
 }

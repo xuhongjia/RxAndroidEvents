@@ -2,6 +2,7 @@ package com.wangjie.rxandroideventssample.mvp.persenter;
 
 import com.wangjie.androidbucket.log.Logger;
 import com.wangjie.androidbucket.mvp.ABNoneInteractorImpl;
+import com.wangjie.rxandroideventssample.mvp.interactor.BaseInteractor;
 import com.wangjie.rxandroideventssample.provider.model.Feed;
 
 import com.wangjie.rxandroideventssample.mvp.viewer.TabFeedViewer;
@@ -18,7 +19,7 @@ import java.util.Random;
  * Email: tiantian.china.2@gmail.com
  * Date: 6/10/15.
  */
-public class TabFeedPresenter extends BasePresenter<TabFeedViewer, ABNoneInteractorImpl> {
+public class TabFeedPresenter extends BasePresenter<TabFeedViewer, BaseInteractor> {
     private static final String TAG = TabFeedPresenter.class.getSimpleName();
     private static int feedCount = 0;
     private Random random = new Random();

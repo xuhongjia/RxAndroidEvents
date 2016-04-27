@@ -1,6 +1,7 @@
 package com.wangjie.rxandroideventssample.ui.activity;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -14,6 +15,7 @@ import com.wangjie.rxandroideventssample.R;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
 import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
 import com.wangjie.rxandroideventssample.base.BaseActivity;
+import com.wangjie.rxandroideventssample.databinding.ActivityMainBinding;
 import com.wangjie.rxandroideventssample.mvp.events.ActionEvent;
 import com.wangjie.rxandroideventssample.mvp.events.AddFeedsEvent;
 import com.wangjie.rxandroideventssample.mvp.events.DeleteFeedsEvent;
@@ -30,22 +32,25 @@ import com.wangjie.rxandroideventssample.ui.tab.setting.TabSettingContainer;
 import java.util.List;
 import java.util.Random;
 
-@AILayout(R.layout.activity_main)
+//@AILayout(R.layout.activity_main)
 public class MainActivity extends BaseActivity {
     public static final String TAG = MainActivity.class.getName();
-    @AIView(R.id.activity_main_tb)
-    private Toolbar toolbar;
-    @AIView(R.id.activity_main_tl)
-    private TabLayout tabLayout;
-    @AIView(R.id.activity_main_vp)
-    private ViewPager viewPager;
+
+    ActivityMainBinding binding;
+    //
+//    @AIView(R.id.activity_main_tb)
+//    private Toolbar toolbar;
+//    @AIView(R.id.activity_main_tl)
+//    private TabLayout tabLayout;
+//    @AIView(R.id.activity_main_vp)
+//    private ViewPager viewPager;
     List<TabContainer> list;
     private TabAdapter tabAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        binding = DataBindingUtil.setContentView(this , R.layout.activity_main);
         initToolbar();
 
         initViews();
@@ -53,14 +58,17 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initToolbar() {
-        toolbar.setTitle("Hello Test");
-        setSupportActionBar(toolbar);
+//        toolbar.setTitle("Hello Test");
+//        setSupportActionBar(toolbar);
+        binding.activityMainTb.setTitle("Hello Test");
+        setSupportActionBar(binding.activityMainTb);
     }
 
     private void initViews() {
-        tabLayout.addTab(tabLayout.newTab().setText("feed"));
-        tabLayout.addTab(tabLayout.newTab().setText("chat"));
-        tabLayout.addTab(tabLayout.newTab().setText("setting"));
+
+        binding.activityMainTl.addTab(binding.activityMainTl.newTab().setText("feed"));
+        binding.activityMainTl.addTab(binding.activityMainTl.newTab().setText("chat"));
+        binding.activityMainTl.addTab(binding.activityMainTl.newTab().setText("setting"));
         tabAdapter = new TabAdapter();
         list = tabAdapter.getList();
         Context context = getContext();
@@ -68,13 +76,13 @@ public class MainActivity extends BaseActivity {
         list.add(new TabChatContainer(context));
         list.add(new TabSettingContainer(context));
 
-        viewPager.setAdapter(tabAdapter);
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        binding.activityMainVp.setAdapter(tabAdapter);
+        binding.activityMainVp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             int state = ViewPager.SCROLL_STATE_DRAGGING;
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                tabLayout.setScrollPosition(position, positionOffset, ViewPager.SCROLL_STATE_DRAGGING == state);
+                binding.activityMainTl.setScrollPosition(position, positionOffset, ViewPager.SCROLL_STATE_DRAGGING == state);
             }
 
             @Override
@@ -87,11 +95,11 @@ public class MainActivity extends BaseActivity {
                 this.state = state;
             }
         });
-        viewPager.setOffscreenPageLimit(2);
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        binding.activityMainVp.setOffscreenPageLimit(2);
+        binding.activityMainTl.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
+                binding.activityMainVp.setCurrentItem(tab.getPosition());
             }
 
             @Override
@@ -104,6 +112,53 @@ public class MainActivity extends BaseActivity {
 
             }
         });
+
+//        tabLayout.addTab(tabLayout.newTab().setText("feed"));
+//        tabLayout.addTab(tabLayout.newTab().setText("chat"));
+//        tabLayout.addTab(tabLayout.newTab().setText("setting"));
+//        tabAdapter = new TabAdapter();
+//        list = tabAdapter.getList();
+//        Context context = getContext();
+//        list.add(new TabFeedContainer(context));
+//        list.add(new TabChatContainer(context));
+//        list.add(new TabSettingContainer(context));
+//
+//        viewPager.setAdapter(tabAdapter);
+//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            int state = ViewPager.SCROLL_STATE_DRAGGING;
+//
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//                tabLayout.setScrollPosition(position, positionOffset, ViewPager.SCROLL_STATE_DRAGGING == state);
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//                this.state = state;
+//            }
+//        });
+//        viewPager.setOffscreenPageLimit(2);
+//        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//                viewPager.setCurrentItem(tab.getPosition());
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
     }
 
 

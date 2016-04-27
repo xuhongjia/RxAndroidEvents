@@ -11,6 +11,6 @@ import rx.functions.Action1;
  * Created by xuhon on 2016/4/26.
  */
 public class BaseApi {
-    protected static VolleyApi.Builder builder = new VolleyApi.Builder();
+    protected final static VolleyApi.Builder builder = new VolleyApi.Builder();
 
 }

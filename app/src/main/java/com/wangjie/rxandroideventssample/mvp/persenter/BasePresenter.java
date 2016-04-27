@@ -2,9 +2,9 @@ package com.wangjie.rxandroideventssample.mvp.persenter;
 
 import com.wangjie.androidbucket.log.Logger;
 import com.wangjie.androidbucket.mvp.ABBasePresenter;
-import com.wangjie.androidbucket.mvp.ABInteractor;
 import com.wangjie.rxandroideventssample.mvp.api.VolleyApi;
 
+import com.wangjie.rxandroideventssample.mvp.interactor.BaseInteractor;
 import com.wangjie.rxandroideventssample.mvp.viewer.BaseViewer;
 
 import rx.Subscription;
@@ -13,7 +13,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class BasePresenter<V extends BaseViewer, I extends ABInteractor> extends ABBasePresenter<V, I> {
+//BaseViewer 为Activity和Presenter的接口，Interactor是Interactor和网络请求的接口，这里我直接用Rxjava了，不需要这层接口
+public class BasePresenter<V extends BaseViewer, I extends BaseInteractor> extends ABBasePresenter<V, I> {
     private static final String TAG = BasePresenter.class.getSimpleName();
 
     private Set<Subscription> subscriptions = new HashSet<>();

@@ -4,6 +4,7 @@ import com.wangjie.androidbucket.log.Logger;
 import com.wangjie.androidbucket.mvp.ABNoneInteractorImpl;
 
 import com.wangjie.rxandroideventssample.mvp.api.UserApi;
+import com.wangjie.rxandroideventssample.mvp.interactor.BaseInteractor;
 import com.wangjie.rxandroideventssample.provider.model.PhoneValidate;
 import com.wangjie.rxandroideventssample.mvp.viewer.TabChatViewer;
 
@@ -16,7 +17,7 @@ import rx.functions.Action1;
 /**
  * Created by xuhon on 2016/4/22.
  */
-public class TabChatPresenter extends BasePresenter<TabChatViewer, ABNoneInteractorImpl> {
+public class TabChatPresenter extends BasePresenter<TabChatViewer, BaseInteractor> {
     private static final String TAG = TabChatPresenter.class.getSimpleName();
     private static int feedCount = 0;
     private Random random = new Random();
