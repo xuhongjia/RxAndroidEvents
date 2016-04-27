@@ -33,14 +33,4 @@ public class TabChatPresenter extends BasePresenter<TabChatViewer, UserInteracto
 //                    viewer.validateReturn((PhoneValidate) phoneValidate);
 //                }));
     }
-
-    void sendValidate(PhoneValidate phoneValidate){
-        goSubscription(
-                Observable
-                        .just(phoneValidate)
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(viewer::validateReturn, throwable -> Logger.w(TAG, "error: " + throwable.getMessage()))
-        );
-    }
-
 }

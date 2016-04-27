@@ -65,7 +65,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initViews() {
-
         binding.activityMainTl.addTab(binding.activityMainTl.newTab().setText("feed"));
         binding.activityMainTl.addTab(binding.activityMainTl.newTab().setText("chat"));
         binding.activityMainTl.addTab(binding.activityMainTl.newTab().setText("setting"));
@@ -240,13 +239,6 @@ public class MainActivity extends BaseActivity {
         Logger.d(TAG, "onPostAccept event: " + event);
         Feed feed = event.getFeed();
         showToastMessage("main_" + feed.getTitle() + "_" + event.getPosition());
-    }
-
-    @Accept({
-            @AcceptType(tag = ActionEvent.NETWORK_ERROR , clazz = String.class)
-    })
-    public void onPostAccept(Object tag, Object actionEvent){
-        showToastMessage("网络错误,错误码为：" + actionEvent.toString());
     }
 
 }

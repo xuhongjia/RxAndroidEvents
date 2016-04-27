@@ -19,8 +19,6 @@ import com.wangjie.androidinject.annotation.core.base.AnnotationManager;
 import com.wangjie.androidinject.annotation.present.AIPresent;
 import com.wangjie.androidinject.annotation.present.common.CallbackSample;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
-import com.wangjie.rxandroideventssample.mvp.events.ActionEvent;
-import com.wangjie.rxandroideventssample.mvp.rxbus.RxBus;
 import com.wangjie.rxandroideventssample.mvp.viewer.BaseViewer;
 import com.wangjie.rxandroideventssample.global.GsonManager;
 
@@ -214,15 +212,15 @@ public class TabContainer extends FrameLayout implements AIPresent, CallbackSamp
     }
 
 
-    @Override
-    public void error(String error) {
-        RxBus.get().post(ActionEvent.ERROR,error);
-    }
-
-    @Override
-    public void noLogin(String msg) {
-
-    }
+//    @Override
+//    public void error(String error) {
+//        RxBus.get().post(ActionEvent.ERROR,error);
+//    }
+//
+//    @Override
+//    public void noLogin(String msg) {
+//
+//    }
 
 
 }

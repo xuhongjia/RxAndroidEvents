@@ -216,35 +216,35 @@ public class VolleyApi {
         this.action1 = action1;
     }
 
-    public static class Builder{
-        VolleyApi volleyApi;
-        public Builder(){
-            volleyApi=new VolleyApi();
-        }
-
-        public Builder setUrl(String url){
-            this.volleyApi.setUrl(url);
-            return this;
-        }
-
-        public Builder setType(Type type){
-            this.volleyApi.setType(type);
-            return this;
-        }
-
-//        public Builder setPresenter(BasePresenter basePresenter){
-//            this.volleyApi.setPresenter(basePresenter);
+//    public static class Builder{
+//        VolleyApi volleyApi;
+//        public Builder(){
+//            volleyApi=new VolleyApi();
+//        }
+//
+//        public Builder setUrl(String url){
+//            this.volleyApi.setUrl(url);
 //            return this;
 //        }
-
-        public Builder setAction(Action1<Object> action1){
-            this.volleyApi.setAction1(action1);
-            return this;
-        }
-
-        //返回VolleyApi对象
-        public VolleyApi getVolley(){
-            return this.volleyApi;
-        }
-    }
+//
+//        public Builder setType(Type type){
+//            this.volleyApi.setType(type);
+//            return this;
+//        }
+//
+////        public Builder setPresenter(BasePresenter basePresenter){
+////            this.volleyApi.setPresenter(basePresenter);
+////            return this;
+////        }
+//
+//        public Builder setAction(Action1<Object> action1){
+//            this.volleyApi.setAction1(action1);
+//            return this;
+//        }
+//
+//        //返回VolleyApi对象
+//        public VolleyApi getVolley(){
+//            return this.volleyApi;
+//        }
+//    }
 }

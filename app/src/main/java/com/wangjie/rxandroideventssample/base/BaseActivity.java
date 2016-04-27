@@ -13,7 +13,7 @@ import com.wangjie.rxandroideventssample.mvp.viewer.BaseViewer;
 
 import java.lang.reflect.Method;
 
-public class BaseActivity extends AIAppCompatActivity implements BaseViewer {
+public class BaseActivity extends ParentActivity implements BaseViewer {
     private RxBusAnnotationManager rxBusAnnotationManager;
     private static final String TAG = BaseActivity.class.getSimpleName();
 
@@ -32,6 +32,11 @@ public class BaseActivity extends AIAppCompatActivity implements BaseViewer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppManager.getAppManager().addActivity(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         if (rxBusAnnotationManager!=null){
             try {
                 Method method = this.getClass().getMethod("netWorkError",Object.class,NetWorkEvent.class);
@@ -45,8 +50,12 @@ public class BaseActivity extends AIAppCompatActivity implements BaseViewer {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onPause() {
+        super.onPause();
+        if (null != rxBusAnnotationManager) {
+            rxBusAnnotationManager.clear();
+        }
+        AppManager.getAppManager().finishActivity(this);
     }
 
     @Override
@@ -66,17 +75,17 @@ public class BaseActivity extends AIAppCompatActivity implements BaseViewer {
         AppManager.getAppManager().finishActivity(this);
     }
 
-    //present中调用主线程的error
-    @Override
-    public void error(String error) {
-
-    }
-
-    //present中调用主线程的noLogin
-    @Override
-    public void noLogin(String msg) {
-
-    }
+//    //present中调用主线程的error
+//    @Override
+//    public void error(String error) {
+//
+//    }
+//
+//    //present中调用主线程的noLogin
+//    @Override
+//    public void noLogin(String msg) {
+//
+//    }
 
     //通过RxBus返回的信息
     @Accept
