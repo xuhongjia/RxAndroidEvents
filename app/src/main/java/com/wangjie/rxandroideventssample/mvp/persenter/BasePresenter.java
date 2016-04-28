@@ -17,8 +17,8 @@ import java.util.Set;
 public class BasePresenter<V extends BaseViewer, I extends BaseInteractor> extends ABBasePresenter<V, I> {
     private static final String TAG = BasePresenter.class.getSimpleName();
 
+    public BasePresenter(){}
     private Set<Subscription> subscriptions = new HashSet<>();
-    protected VolleyApi.Builder builder = new VolleyApi.Builder();
 
     //关闭所有的监听事件
     @Override

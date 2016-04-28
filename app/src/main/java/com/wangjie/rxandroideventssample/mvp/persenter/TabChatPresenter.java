@@ -2,6 +2,8 @@ package com.wangjie.rxandroideventssample.mvp.persenter;
 
 import com.wangjie.androidbucket.log.Logger;
 
+import com.wangjie.androidbucket.services.network.interceptor.Interceptor;
+import com.wangjie.androidinject.annotation.annotations.mvp.AIPresenter;
 import com.wangjie.rxandroideventssample.mvp.interactor.UserInteractor;
 import com.wangjie.rxandroideventssample.provider.model.PhoneValidate;
 import com.wangjie.rxandroideventssample.mvp.viewer.TabChatViewer;
@@ -21,7 +23,11 @@ public class TabChatPresenter extends BasePresenter<TabChatViewer, UserInteracto
     private Random random = new Random();
     private static final int ONE_HOUR = 1000 * 60 * 60;
 
-    //发送请求 ，一行代码实现网络请求
+    public TabChatPresenter(){
+        super();
+        interactor = new UserInteractor();
+    }
+
     public void getValidate(String phone){
         interactor.sendValidate(phone, o -> {viewer.validateReturn((PhoneValidate) o);});
 //        goSubscription(
