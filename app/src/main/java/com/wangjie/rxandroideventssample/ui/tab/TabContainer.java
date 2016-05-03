@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.wangjie.androidbucket.mvp.ABBasePresenter;
@@ -179,7 +180,7 @@ public class TabContainer extends FrameLayout implements AIPresent, CallbackSamp
      */
     @Override
     public void showToastMessage(String s) {
-        showToastMessage(s);
+        Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.wangjie.rxandroideventssample.base;
 
 import android.os.Bundle;
 
-import com.wangjie.androidinject.annotation.present.AIAppCompatActivity;
 import com.wangjie.rxandroideventssample.annotation.accept.Accept;
 import com.wangjie.rxandroideventssample.annotation.accept.AcceptType;
 import com.wangjie.rxandroideventssample.mvp.events.ActionEvent;
